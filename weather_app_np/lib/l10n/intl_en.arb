@@ -1,0 +1,10 @@
+{
+  "searchButton": "Search",
+  "searchHintText": "Search for a city...",
+  "humidity": "Humidity",
+  "sunrise": "Sunrise",
+  "sunset": "Sunset",
+  "pressure": "Pressure",
+  "wind": "Wind",
+  "speedMeasure": "km/h"
+}

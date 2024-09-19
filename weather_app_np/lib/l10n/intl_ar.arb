@@ -1,0 +1,10 @@
+{
+  "searchButton": "ابحث",
+  "searchHintText": "ابحث عن مدينة...",
+  "humidity": "الرطوبة",
+  "sunrise": "الشروق",
+  "sunset": "الغروب",
+  "pressure": "الضغط الجوي",
+  "wind": "سرعة الرياح",
+  "speedMeasure": "كم/س"
+}
