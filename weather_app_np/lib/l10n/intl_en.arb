@@ -6,5 +6,7 @@
   "sunset": "Sunset",
   "pressure": "Pressure",
   "wind": "Wind",
-  "speedMeasure": "km/h"
+  "speedMeasure": "km/h",
+  "getCurrentCity": "Get Current City",
+  "searchCity": "Search for a City"
 }

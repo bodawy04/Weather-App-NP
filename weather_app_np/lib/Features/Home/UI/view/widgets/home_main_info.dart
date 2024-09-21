@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
-import 'package:translator/translator.dart';
 
 import '../../../../../Core/Utils/styles.dart';
 import '../../../Data/Remote Data/models/weather_model.dart';
 
 class HomeMainInfo extends StatelessWidget {
-  WeatherModel weatherModel;
+  final WeatherModel weatherModel;
 
-  HomeMainInfo(this.weatherModel);
+  const HomeMainInfo(this.weatherModel, {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -25,8 +24,12 @@ class HomeMainInfo extends StatelessWidget {
         RichText(
           text: TextSpan(children: [
             TextSpan(
-                text:
-                    '${NumberFormat('##',  Intl.getCurrentLocale()=='ar'?'ar_EG':Intl.getCurrentLocale()).format((weatherModel.main!.temp! - 273.15).round())}',
+                text: NumberFormat(
+                        '##',
+                        Intl.getCurrentLocale() == 'ar'
+                            ? 'ar_EG'
+                            : Intl.getCurrentLocale())
+                    .format((weatherModel.main!.temp! - 273.15).round()),
                 style: Styles.textStyleDegree),
             TextSpan(
                 text: '°',

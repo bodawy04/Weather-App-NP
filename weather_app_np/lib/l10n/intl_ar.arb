@@ -6,5 +6,7 @@
   "sunset": "الغروب",
   "pressure": "الضغط الجوي",
   "wind": "سرعة الرياح",
-  "speedMeasure": "كم/س"
+  "speedMeasure": "كم/س",
+  "getCurrentCity": "شوف مدينتك",
+  "searchCity": "ابحث عن مدينة"
 }

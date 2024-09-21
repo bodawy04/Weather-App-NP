@@ -1,18 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../../../Core/Utils/service_locator.dart';
 import '../../../Data/Database/SQLite/local_database.dart';
 import '../../../Data/Remote Data/models/weather_model.dart';
-import '../../manager/home_provider.dart';
 import 'home_details_box.dart';
 import 'home_main_info.dart';
 
-class HomeViewBody extends StatelessWidget {
+class MyLocationWeather extends StatelessWidget {
   final WeatherModel element;
   final SQLDB sqldb = SQLDB();
 
-  HomeViewBody(this.element, {super.key});
+  MyLocationWeather(this.element, {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -32,8 +30,8 @@ class HomeViewBody extends StatelessWidget {
                 element.sys!.sunset!.toString(),
                 element.main!.pressure!,
                 element.wind!.speed!.toInt());
-            getIt.get<HomeProvider>().resetWeatherModel();
-            // Navigator.of(context).pop();
+            // ignore: use_build_context_synchronously
+            Navigator.of(context).pop();
           },
           icon: Icon(
             Icons.arrow_back,

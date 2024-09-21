@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get_it/get_it.dart';
 import 'package:intl/intl.dart';
 import 'package:weather_app_np/Features/Home/Data/Database/SQLite/local_database.dart';
 import 'package:weather_app_np/Features/Home/UI/manager/home_provider.dart';
@@ -11,6 +10,8 @@ import '../../manager/locale_provider.dart';
 import '../widgets/search_box.dart';
 
 class SearchScreen extends StatelessWidget {
+  const SearchScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -55,68 +56,60 @@ class SearchScreen extends StatelessWidget {
         ],
       ),
       body: Container(
-          decoration: BoxDecoration(
-              image: DecorationImage(
-                  image: AssetImage(
-                    "Assets/images/background.jpg",
-                  ),
-                  fit: BoxFit.fill)),
-          child: Center(
-            child: Column(
-                mainAxisSize: MainAxisSize.min,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                Column(
-                mainAxisSize: MainAxisSize.min,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-            SearchBox(
-            home: getIt.get<HomeProvider>(),
-            textEditingController: TextEditingController(),
-          ),
-          FutureBuilder(
-            future: SQLDB().readData(),
-            builder: (context, snapshots) =>
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 40.w),
-                  child: Container(
-                    decoration: BoxDecoration(
-                        color: Colors.black.withOpacity(0.5),
-                        borderRadius: BorderRadius.circular(12)
-                  ),
-                  child: ListView.builder(
-                      padding: EdgeInsets.all(0),
-                      itemCount: snapshots.data!.length!,
-                      itemBuilder: (context, i) =>
-                          ListTile(
-                            title: Text(
-                              snapshots.data![i]['City Name'],
-                              style: Styles.textStyle20Black,
-                            ),
-                            subtitle: Text(
-                              snapshots.data![i]['Weather Status'],
-                              style: Styles.textStyle20Grey.copyWith(
-                                  fontSize: 16.sp),
-                            ),
-                            trailing: Text(
-                              '${NumberFormat('##',
-                                  Intl.getCurrentLocale() == 'ar'
-                                      ? 'ar_EG'
-                                      : Intl.getCurrentLocale()).format(
-                                  ((snapshots.data![i]['Weather Degree'] -
-                                      273.15).floor()))}°',
-                              style: Styles.textStyle20White,
-                            ),
-                          ),
-                      shrinkWrap: true),
+        decoration: const BoxDecoration(
+            image: DecorationImage(
+                image: AssetImage(
+                  "Assets/images/background.jpg",
                 ),
-          ))
-      ],
-    ),
-    ],
-    ),
-    ),
-    ),
+                fit: BoxFit.fill)),
+        child: Center(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Column(
+                mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  SearchBox(
+                    home: getIt.get<HomeProvider>(),
+                    textEditingController: TextEditingController(),
+                  ),
+                  FutureBuilder(
+                      future: SQLDB().readData(),
+                      builder: (context, snapshots) => Padding(
+                            padding: EdgeInsets.symmetric(horizontal: 40.w),
+                            child: Container(
+                              decoration: BoxDecoration(
+                                  color: Colors.black.withOpacity(0.5),
+                                  borderRadius: BorderRadius.circular(12)),
+                              child: ListView.builder(
+                                  padding: const EdgeInsets.all(0),
+                                  itemCount: snapshots.data!.length,
+                                  itemBuilder: (context, i) => ListTile(
+                                        title: Text(
+                                          snapshots.data![i]['City Name'],
+                                          style: Styles.textStyle20Black,
+                                        ),
+                                        subtitle: Text(
+                                          snapshots.data![i]['Weather Status'],
+                                          style: Styles.textStyle20Grey
+                                              .copyWith(fontSize: 16.sp),
+                                        ),
+                                        trailing: Text(
+                                          '${NumberFormat('##', Intl.getCurrentLocale() == 'ar' ? 'ar_EG' : Intl.getCurrentLocale()).format(((snapshots.data![i]['Weather Degree'] - 273.15).floor()))}°',
+                                          style: Styles.textStyle20White,
+                                        ),
+                                      ),
+                                  shrinkWrap: true),
+                            ),
+                          ))
+                ],
+              ),
+            ],
+          ),
+        ),
+      ),
     );
   }
 }

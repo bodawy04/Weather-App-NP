@@ -10,7 +10,7 @@ import '../../../Data/Remote Data/models/weather_model.dart';
 class HomeDetailsBox extends StatelessWidget {
   final WeatherModel weatherModel;
 
-  HomeDetailsBox(this.weatherModel);
+  const HomeDetailsBox(this.weatherModel, {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +34,7 @@ class HomeDetailsBox extends StatelessWidget {
                 style: Styles.textStyle20White,
               ),
               trailing: Text(
-                '${NumberFormat('##',  Intl.getCurrentLocale()=='ar'?'ar_EG':Intl.getCurrentLocale()).format(weatherModel.main!.humidity!)}%',
+                '${NumberFormat('##', Intl.getCurrentLocale() == 'ar' ? 'ar_EG' : Intl.getCurrentLocale()).format(weatherModel.main!.humidity!)}%',
                 style: Styles.textStyle20Grey,
               ),
             ),
@@ -75,7 +75,7 @@ class HomeDetailsBox extends StatelessWidget {
                 style: Styles.textStyle20White,
               ),
               trailing: Text(
-                '${NumberFormat('##', Intl.getCurrentLocale()=='ar'?'ar_EG':Intl.getCurrentLocale()).format(weatherModel.main!.pressure!)} mb',
+                '${NumberFormat('##', Intl.getCurrentLocale() == 'ar' ? 'ar_EG' : Intl.getCurrentLocale()).format(weatherModel.main!.pressure!)} mb',
                 style: Styles.textStyle20Grey,
               ),
             ),
@@ -87,7 +87,7 @@ class HomeDetailsBox extends StatelessWidget {
                   style: Styles.textStyle20White,
                 ),
                 trailing: Text(
-                  '${NumberFormat('##',  Intl.getCurrentLocale()=='ar'?'ar_EG':Intl.getCurrentLocale()).format(weatherModel.wind!.speed!)} ${S.of(context).speedMeasure}',
+                  '${NumberFormat('##', Intl.getCurrentLocale() == 'ar' ? 'ar_EG' : Intl.getCurrentLocale()).format(weatherModel.wind!.speed!)} ${S.of(context).speedMeasure}',
                   style: Styles.textStyle20Grey,
                 )),
           ],

@@ -1,5 +1,6 @@
-import 'package:flutter/material.dart';
 import 'package:dartz/dartz.dart';
+import 'package:flutter/material.dart';
+
 import '../../../../Core/Errors/failures.dart';
 import '../../Data/Remote Data/Repository/home_repo.dart';
 import '../../Data/Remote Data/models/weather_model.dart';
@@ -23,17 +24,17 @@ class HomeProvider with ChangeNotifier {
     _errorMessage = null;
     notifyListeners();
 
-    Either<Failure, WeatherModel> result = await homeRepo.fetchSearchedCity(country);
+    Either<Failure, WeatherModel> result =
+        await homeRepo.fetchSearchedCity(country);
 
     result.fold(
-          (failure) {
-        _errorMessage = failure.errMessage!;
+      (failure) {
+        _errorMessage = failure.errMessage;
       },
-          (weather) {
+      (weather) {
         _weatherModel = weather;
       },
     );
-
     _isLoading = false;
     notifyListeners();
   }

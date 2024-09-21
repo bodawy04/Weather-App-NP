@@ -22,9 +22,11 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "getCurrentCity": MessageLookupByLibrary.simpleMessage("شوف مدينتك"),
         "humidity": MessageLookupByLibrary.simpleMessage("الرطوبة"),
         "pressure": MessageLookupByLibrary.simpleMessage("الضغط الجوي"),
         "searchButton": MessageLookupByLibrary.simpleMessage("ابحث"),
+        "searchCity": MessageLookupByLibrary.simpleMessage("ابحث عن مدينة"),
         "searchHintText":
             MessageLookupByLibrary.simpleMessage("ابحث عن مدينة..."),
         "speedMeasure": MessageLookupByLibrary.simpleMessage("كم/س"),

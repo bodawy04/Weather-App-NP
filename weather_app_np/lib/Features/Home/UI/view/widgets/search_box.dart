@@ -8,8 +8,7 @@ import '../../../../../generated/l10n.dart';
 class SearchBox extends StatelessWidget {
   final HomeProvider home;
 
-  SearchBox({
-    super.key,
+  const SearchBox({super.key,
     required this.textEditingController,
     required this.home,
   });
@@ -36,14 +35,14 @@ class SearchBox extends StatelessWidget {
               controller: textEditingController,
               style: Styles.textStyle20White,
               decoration: InputDecoration(
-                hintText:S.of(context).searchHintText,
+                hintText: S.of(context).searchHintText,
                 hintStyle: Styles.textStyle20Grey,
                 focusColor: Colors.transparent,
                 focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.transparent),
+                    borderSide: const BorderSide(color: Colors.transparent),
                     borderRadius: BorderRadius.circular(12)),
                 enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.transparent),
+                    borderSide: const BorderSide(color: Colors.transparent),
                     borderRadius: BorderRadius.circular(12)),
               ),
             ),
@@ -64,7 +63,10 @@ class SearchBox extends StatelessWidget {
                   await home.fetchSearchedCity(textEditingController.text);
                   textEditingController.clear();
                 },
-                child: Text(S.of(context).searchButton,style: Styles.textStyle20White,)),
+                child: Text(
+                  S.of(context).searchButton,
+                  style: Styles.textStyle20White,
+                )),
           )
         ],
       ),

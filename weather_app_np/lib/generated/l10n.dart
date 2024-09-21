@@ -129,6 +129,26 @@ class S {
       args: [],
     );
   }
+
+  /// `Get Current City`
+  String get getCurrentCity {
+    return Intl.message(
+      'Get Current City',
+      name: 'getCurrentCity',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Search for a City`
+  String get searchCity {
+    return Intl.message(
+      'Search for a City',
+      name: 'searchCity',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
